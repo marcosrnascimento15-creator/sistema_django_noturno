@@ -1,7 +1,8 @@
 from django.urls import path
-from . import views  # Importa suas views
+from . import views
+
 
 urlpatterns = [
-    # Aponta para a função no arquivo views.py
-    path('', views.login, name='login'), 
+    path('', views.login, name='login'),
+    path('novoUsuario/', views.novo_usuario, name='novo_usuario'),
 ]
