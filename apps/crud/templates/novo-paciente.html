@@ -1,8 +1,8 @@
 {% extends 'base-crud.html' %}
 {% block title %}Novo Paciente{% endblock %}
+{% load static %}
 {% block content %}
-   
-    <h1 class="mt-5">
+       <h1 class="mt-5">
         Cadastrar Novo Paciente
     </h1>
     <hr>
@@ -22,7 +22,7 @@
                 <label for="cpf" class="form-label">
                     CPF:
                 </label>
-                <input type="text" class="form-control" name="cpf" required>
+                <input type="text" class="form-control" id="cpf" name="cpf" required>
             </div>
         </div>
         <div class="row">
@@ -38,7 +38,7 @@
                 <label for="telefone" class="form-label">
                     Telefone:
                 </label>
-                <input type="text" class="form-control" name="telefone" required>
+                <input type="text" class="form-control" id="telefone" name="telefone" required>
             </div>
         </div>
         <div class="row">
@@ -46,7 +46,7 @@
                 <label for="data_nascimento" class="form-label">
                     Data de Nascimento:
                 </label>
-                <input type="date" class="form-control" name="data_nascimento" required>
+                <input type="date" class="form-control" id="data_nascimento" name="data_nascimento" required>
             </div>
         </div>
         <div class="row">
@@ -57,4 +57,7 @@
             </div>
             <p class="mt-3"> Já possui cadastro de paciente? <a href="novo-paciente/">Ver lista de pacientes</a>.</p>
         </div>
+    </form>
+
+    <script src="{% static 'js/script.js' %}"></script>
 {% endblock %}
