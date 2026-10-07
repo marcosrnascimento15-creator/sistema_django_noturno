@@ -1,0 +1,63 @@
+{% extends 'base-crud.html' %}
+{% block title %}Alterar Paciente{% endblock %}
+{% load static %}
+{% block content %}
+       <h1 class="mt-5">
+        Alterar dados do Paciente
+    </h1>
+    <hr>
+    {% if error %}<p>{{error}}</p>{% endif%}
+    <form action="{% url 'alterar-paciente' paciente.codigo_paciente  %}" method="POST">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-12 col-md-8 col-lg-6 mb-3">
+                <label for="nome" class="form-label">
+                    Nome do paciente:
+                </label>
+                <input type="text" class="form-control" name="nome" value="{{ paciente.nome }}" required>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-md-6 col-lg-4 mb-3">
+                <label for="cpf" class="form-label">
+                    CPF:
+                </label>
+                <input type="text" class="form-control" id="cpf" name="cpf" value="{{ paciente.cpf }}" required>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-md-6 col-lg-4 mb-3">
+                <label for="email" class="form-label">
+                    Email:
+                </label>
+                <input type="email" class="form-control" name="email" value="{{ paciente.email }}" required>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-md-6 col-lg-4 mb-3">
+                <label for="telefone" class="form-label">
+                    Telefone:
+                </label>
+                <input type="text" class="form-control" id="telefone" name="telefone" value="{{paciente.telefone}}" required>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-md-6 col-lg-4 mb-3">
+                <label for="data_nascimento" class="form-label">
+                    Data de Nascimento:
+                </label>
+                <input type="date" class="form-control" id="data_nascimento" name="data_nascimento" value="{{ paciente.data_nascimento | date:'Y-m-d' }}" required>
+            </div>
+        </div>
+        <div class="row">
+            <div class="mt-4">
+                <button type="submit" class="btn btn-primary">
+                    Salvar alterações
+                </button>
+            </div>
+            <p class="mt-3"> Já possui cadastro de paciente? <a href="novo-paciente/">Ver lista de pacientes</a>.</p>
+        </div>
+    </form>
+
+    <script src="{% static 'js/script.js' %}"></script>
+{% endblock %}

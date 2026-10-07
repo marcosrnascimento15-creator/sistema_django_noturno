@@ -1,7 +1,26 @@
 {% extends 'base-crud.html' %}
 {% block title %} CRUD | Home Page {% endblock %}
 {% block content %}
-<div class="d-flex vh-100 justify-content-center align-items-center">
-    <h1>Home Page do Sistema CRUD</h1>
+<div class="row mt-5">
+    <h1>Olá, {{ user.first_name }}! Seja bem-vindo ao Sistema CRUD.</h1>
+</div>
+<hr class="my-4"> 
+<div class="row mt-5">
+    <h2>Lista de pacientes</h2>
+    <ul>
+        {% for paciente in pacientes %}
+            <li>
+                {{ paciente.codigo_paciente}} |
+                {{ paciente.nome }} |
+                {{ paciente.cpf }} |
+                {{ paciente.email }} |
+                {{ paciente.telefone }} |
+                {{ paciente.data_nascimento | date:"d/m/Y" }} |
+                <a href="{% url 'alterar-paciente' paciente.codigo_paciente %}">Alterar</a> |
+            </li> 
+        {% empty %}
+            <li>Nenhum paciente cadastrado.</li>
+        {% endfor %}
+    </ul>
 </div>
 {% endblock %}
