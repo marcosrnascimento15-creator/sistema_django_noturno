@@ -16,7 +16,12 @@
                 {{ paciente.email }} |
                 {{ paciente.telefone }} |
                 {{ paciente.data_nascimento | date:"d/m/Y" }} |
-                <a href="{% url 'alterar-paciente' paciente.codigo_paciente %}">Alterar</a> |
+                <a href="">Alterar</a> |
+                <a href="{% url 'excluir_paciente' paciente.codigo_paciente %}">Excluir</a>
+                <ul>
+                    <li>
+                        Sintomas: {{ paciente.sintomas }}
+                    </li>
             </li> 
         {% empty %}
             <li>Nenhum paciente cadastrado.</li>

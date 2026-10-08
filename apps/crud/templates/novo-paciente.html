@@ -7,7 +7,7 @@
     </h1>
     <hr>
     {% if error %}<p>{{error}}</p>{% endif%}
-    <form action="{% url 'novo-paciente' %}" method="POST">
+    <form action="{% url 'novo_paciente' %}" method="POST">
         {% csrf_token %}
         <div class="row">
             <div class="col-12 col-md-8 col-lg-6 mb-3">
@@ -49,6 +49,12 @@
                 <input type="date" class="form-control" id="data_nascimento" name="data_nascimento" required>
             </div>
         </div>
+            <div class="col-12 col-md-6 col-lg-4 mb-3">
+                <label for="sintomas" class="form-label">
+                    Sintomas:
+                </label>
+                <textarea class="form-control" rows="3" id="sintomas" name="sintomas"></textarea>
+            </div>
         <div class="row">
             <div class="mt-4">
                 <button type="submit" class="btn btn-primary">

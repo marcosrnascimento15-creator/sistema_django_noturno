@@ -8,6 +8,7 @@ class Paciente(models.Model):
     email = models.EmailField(unique=True, null=False, blank=False)
     telefone = models.CharField(max_length=15, null=False, blank=False)
     data_nascimento = models.DateField(null=False, blank=False)
-    
+    sintomas = models.TextField(null=True, blank=True)
+
     def __str__(self):
         return f"{self.nome}"

@@ -1,3 +1,4 @@
+from webbrowser import get
 from django.contrib.auth.decorators import login_required
 from django.http import request
 from django.shortcuts import render, redirect
@@ -37,7 +38,6 @@ from .models import Paciente
 
 @login_required
 def alterar_paciente(request, codigo_paciente):
-    # Usa get_object_or_404 para retornar 404 em vez de Erro 500 se não encontrar
     paciente = get_object_or_404(Paciente, codigo_paciente=codigo_paciente)
     
     if request.method == 'POST':
@@ -48,7 +48,18 @@ def alterar_paciente(request, codigo_paciente):
         paciente.data_nascimento = request.POST.get('data_nascimento')
 
         paciente.save()
-        return redirect('index')  # Redireciona somente após salvar
+        return redirect('index') 
         
-    # Em requisições GET, renderiza o template de edição passando os dados atuais
     return render(request, 'alterar_paciente.html', {'paciente': paciente})
+
+@login_required
+def excluir_paciente(request, codigo_paciente):
+    paciente = Paciente.objects.get(codigo_paciente=codigo_paciente)
+    paciente.delete()
+    return redirect('index')
+
+def buscar_paciente(request):
+    query = request.GET.get('buscar','')
+    pacientes = Paciente.objects.filter(nome__icontains=query)
+    return render(request, 'index.html', {'pacientes': pacientes, 'query': query})
+    
